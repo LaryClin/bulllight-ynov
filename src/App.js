@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {CircularProgress, Container, Divider} from "@mui/material";
+import React, { Suspense } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from "./views/Home";
+import Login from "./views/Login";
+import Header from "./includes/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <BrowserRouter>
+            <Header>
+              <Suspense fallback={<CircularProgress />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </Suspense>
+            </Header>
+        </BrowserRouter>
   );
 }
 

@@ -3,6 +3,8 @@ import { createTheme } from '@mui/material/styles';
 
 const primaryDark = "#211F24"
 const secondaryDark = "#FFFFFF"
+const tertiary = "#fee98b"
+const tertiarySecond = "#e4cc60"
 export const theme = createTheme({
     palette: {
         primary: {
@@ -12,6 +14,10 @@ export const theme = createTheme({
         secondary: {
             main: secondaryDark,
             contrastText: primaryDark
+        },
+        tertiary: {
+            main: tertiary,
+            secondary: tertiarySecond
         }
     },
     a:{
@@ -32,14 +38,14 @@ export const theme = createTheme({
                 }
             }
         },
-        MuiInputBase: {
+        MuiFormLabel: {
             styleOverrides: {
                 root:{
                     variants: [
                         {
                             props: { variant: 'outlined' },
                             style: {
-                                textTransform: 'none'
+                                color: secondaryDark,
                             },
                         },
                     ],
@@ -47,14 +53,79 @@ export const theme = createTheme({
                 }
             }
         },
-        MuiTextField: {
-            styleOverrides: {
-                root:{
-                    color: secondaryDark
-                }
-
+        MuiInputLabel:{
+            styleOverrides:{
+                outlined: {
+                    color: secondaryDark,
+                    '&.MuiInputLabel-shrink': {
+                        color: secondaryDark
+                    },
+                },
             }
         },
-    },
+        MuiFormControlLabel:{
+            styleOverrides:{
+                root:{
+                    color: tertiary,
+                    ":focus":{
+                        color: tertiary
+                    }
+                }
+            }
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root:{
+                    variants: [
+                        {
+                            props: { variant: 'outlined' },
+                            style: {
+                                color: secondaryDark
+                            },
+                        },
+                    ],
+                    color: secondaryDark,
+                    borderColor: tertiary,
+                }
+            }
+        },
+        MuiOutlinedInput:{
+            styleOverrides: {
+                focused:{
+                    color: secondaryDark
+                },
+                notchedOutline:{
+                    borderColor: tertiary,
+                    transition: "all 0.3s ease-in",
+                }
+            }
+        },
+        MuiButton:{
+            variants:[
+                {
+                    props: { variant: 'cta' },
+                    style: {
+                        backgroundColor: tertiary,
+                        ":active": {
+                            backgroundColor: tertiary,
+                        },
+                        ":hover": {
+                            backgroundColor: tertiarySecond
+                        }
+                    }
+                }
+            ],
+        },
+        MuiLink:{
+            variants:[
+                {
+                    props:{ variant: 'body2'},
+                    style:{
+                        color: secondaryDark
+                    }
+                }
+            ],
+        }
+    }
 
 });

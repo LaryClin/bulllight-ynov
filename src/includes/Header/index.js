@@ -13,12 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import logoDark from '../../assets/img/logo-dark.svg'
 import {NavLink} from "react-router-dom";
 import {StyledMenu} from "../../components/molecules/StyledMenu";
+import {StyledNavLink} from "../../components/atoms/StyledNavLink";
+import {pages} from "../../constants/link";
 
-const pages = [
-    {key:'', value:'Home'},
-    {key:'login', value:'Sign in'},
-    {key:'register', value:'Sign up'},
-];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = ({children}) => {
@@ -95,7 +92,7 @@ const Header = ({children}) => {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <NavLink to={'/'+page.key} style={{ textDecoration: "none", color: "white"}}> {page.value} </NavLink>
+                                <StyledNavLink to={'/'+page.key} style={{ textDecoration: "none", color: "white"}}> {page.value} </StyledNavLink>
                             </Button>
                         ))}
                     </Box>

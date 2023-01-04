@@ -1,5 +1,6 @@
 import "../App.css"
 import FullBackgroundImage from "../assets/logo-full-transparent.png"
+import {useNavigate} from "react-router-dom";
 
 /*
   MUI IMPORTS
@@ -11,6 +12,8 @@ import {
 } from "@mui/material";
 
 export default function Register() {
+  const navigate = useNavigate()
+
   return (
     <div className="d-flex justify-content-center align-items-center w-100 h-100 flex-column">
       <img className="logo mx-auto" src={FullBackgroundImage} alt="..."/>
@@ -90,7 +93,13 @@ export default function Register() {
         />
 
         <div className="mt-2 d-flex justify-content-end">
-          <Button variant="text" className="text-primary text-transform-initial">Login</Button>
+          <Button
+            variant="text"
+            className="text-primary text-transform-initial"
+            onClick={() => {navigate("/login")}}
+          >
+            Login
+          </Button>
           <Button variant="contained" className="bg-primary text-black text-transform-initial">Register</Button>
         </div>
       </div>

@@ -91,12 +91,14 @@ export const theme = createTheme({
         },
         MuiOutlinedInput:{
             styleOverrides: {
-                focused:{
-                    color: secondaryDark
-                },
                 notchedOutline:{
                     borderColor: tertiary,
                     transition: "all 0.3s ease-in",
+                }
+            },
+            "root": {
+                "&.Mui-focused": {
+                    "color": secondaryDark
                 }
             }
         },

@@ -8,63 +8,20 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import icon from "../../assets/img/icon.svg"
+import {useTheme} from "@mui/material";
 import {StyledNavLink} from "../../components/atoms/StyledNavLink";
-import {useEffect, useRef, useState} from "react";
-import { useNavigate } from "react-router-dom"
-import {useLoginMutation} from "./auth/authApiSlice";
-import {setCredentials} from "./auth/authSlice";
-import { useDispatch } from 'react-redux'
-import {theme} from "../../theme/theme";
 
-export default function SignIn() {
-    const emailRef = useRef()
-    const errRef = useRef()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [errMsg, setErrMsg] = useState('')
-    const navigate = useNavigate()
+export default function Register() {
+    const theme = useTheme()
 
-    const [login, { isLoading }] = useLoginMutation()
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        emailRef.current.focus()
-
-
-    }, [])
-
-    useEffect(() => {
-        setErrMsg('')
-    }, [email, password])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        try {
-            const userData = await login({ email, password }).unwrap()
-            dispatch(setCredentials({ ...userData, email }))
-            setEmail('')
-            setPassword('')
-            navigate('/welcome')
-        } catch (err) {
-            console.log(err)
-            if (!err?.status) {
-                // isLoading: true until timeout occurs
-                setErrMsg('No Server Response');
-            } else if (err.status === 400) {
-                setErrMsg('Missing Email or Password');
-            } else if (err.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            errRef.current.focus();
-        }
-    }
-
-    const handleEmailInput = (e) => setEmail(e.target.value)
-
-    const handlePasswordInput = (e) => setPassword(e.target.value)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+            email: data.get("email"),
+            password: data.get("password")
+        });
+    };
 
     return (
         <Container component="main" maxWidth="xs">
@@ -80,7 +37,7 @@ export default function SignIn() {
                     <img src={icon} width={75} style={{padding: "1rem"}}/>
                 </Box>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Sign up
                 </Typography>
                 <Box
                     component="form"
@@ -88,15 +45,11 @@ export default function SignIn() {
                     noValidate
                     sx={{ mt: 1 }}
                 >
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <TextField
                         margin="normal"
                         required
                         fullWidth
                         id="email"
-                        ref={emailRef}
-                        value={email}
-                        onChange={handleEmailInput}
                         label="Email Address"
                         name="email"
                         autoComplete="email"
@@ -111,13 +64,18 @@ export default function SignIn() {
                         label="Password"
                         type="password"
                         id="password"
-                        onChange={handlePasswordInput}
-                        value={password}
                         autoComplete="current-password"
                     />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="secondary" />}
-                        label="Remember me"
+                    <TextField
+                        floatingLabelFocusStyle={{color: theme.palette.secondary.main}}
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="Confirm password"
+                        label="Confirm password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
                     />
                     <Button
                         type="submit"
@@ -125,12 +83,12 @@ export default function SignIn() {
                         variant="cta"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <StyledNavLink to={"/register"}>
-                                {"Don't have an account? Sign Up"}
+                            <StyledNavLink to={"/login"}>
+                                {"Already have an account? Sign in"}
                             </StyledNavLink>
                         </Grid>
                     </Grid>

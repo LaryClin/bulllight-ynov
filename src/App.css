@@ -93,6 +93,10 @@ html, body, #root, .App {
     flex-direction: column;
 }
 
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
 /*
     LOGO
  */
@@ -124,6 +128,68 @@ h2, .h2 {
     height: 100%;
 }
 
+.h-50 {
+    height: 50%;
+}
+
+/*
+    CARDS
+ */
+.card {
+    width: 96%;
+    margin: auto;
+    background: white;
+    border-radius: 20px;
+    color: black;
+}
+
+.card.element {
+    width: 96%;
+    margin: 2% auto;
+    min-height: 25%;
+
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    background: linear-gradient(to right, darkgray 0%, darkgray 40%, white 40%, white 100%);
+}
+
+.card-content {
+    margin-left: 40%;
+    height: 100%;
+    padding: 1% 1%;
+}
+
+.card-content h2 {
+    color: black;
+}
+
+.card-content p {
+    font-family: Verdana, sans-serif;
+}
+
+/*
+    NAVBAR
+ */
+.navbar {
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar .navbar-img {
+    max-height: 64px;
+    margin: 1% 5%;
+}
+
+.navbar .navbar-title {
+    font-family: VerdanaB, sans-serif;
+    font-size: 3rem;
+}
+
 /*
     SPACING
  */
@@ -148,10 +214,17 @@ h2, .h2 {
     margin-top: 3rem !important;
 }
 
+.mt--30p {
+    margin-top: 30%;
+    height: 85%;
+    overflow: auto;
+}
+
 div.container {
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+    color: white;
 }
 
 /*

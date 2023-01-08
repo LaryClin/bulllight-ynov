@@ -132,6 +132,21 @@ h2, .h2 {
     height: 50%;
 }
 
+.hr {
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+
+.hr::before,
+.hr::after {
+    background: currentColor;
+    content: "";
+    flex: 1;
+    height: .025em;
+    margin: 0 .5em;
+}
+
 /*
     CARDS
  */
@@ -154,9 +169,24 @@ h2, .h2 {
     background: linear-gradient(to right, darkgray 0%, darkgray 40%, white 40%, white 100%);
 }
 
-.card-content {
+.card.details {
+    width: 96%;
+    margin: 2% auto;
+    min-height: 95%;
+    height: 95%;
+
+    border-radius: 16px;
+    background: linear-gradient(to bottom, darkgray 0%, darkgray 30%, white 30%, white 100%);
+}
+
+.card.element .card-content {
     margin-left: 40%;
     height: 100%;
+    padding: 1% 1%;
+}
+
+.card-content {
+    height: 70%;
     padding: 1% 1%;
 }
 
@@ -236,6 +266,10 @@ div.container {
 
 .text-center {
     text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 /*

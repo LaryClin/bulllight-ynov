@@ -1,4 +1,12 @@
 export const pages = [
-    {key:'', value:'Home'},
-    {key:'login', value:'Sign in'},
+    {
+        key:'home',
+        value:'Home',
+        showAuth: true
+    },
+    {
+        key:'login',
+        value:'Sign in',
+        showAuth: false
+    },
 ];

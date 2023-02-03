@@ -15,6 +15,8 @@ import {NavLink} from "react-router-dom";
 import {StyledMenu} from "../../components/molecules/StyledMenu";
 import {StyledNavLink} from "../../components/atoms/StyledNavLink";
 import {pages} from "../../constants/link";
+import {useSelector} from "react-redux";
+import {selectCurrentToken} from "../../views/Login/auth/authSlice";
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -36,6 +38,7 @@ const Header = ({children}) => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    const token = useSelector(selectCurrentToken)
 
 
     return (
@@ -87,13 +90,24 @@ const Header = ({children}) => {
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, ml: '3rem' }}>
                         {pages.map((page) => (
+                            token ?
+                                page.showAuth ?
                             <Button
                                 key={page.key}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 <StyledNavLink to={'/'+page.key} style={{ textDecoration: "none", color: "white"}}> {page.value} </StyledNavLink>
-                            </Button>
+                            </Button>: <></>
+                                : !page.showAuth ?
+                                    <Button
+                                        key={page.key}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <StyledNavLink to={'/'+page.key} style={{ textDecoration: "none", color: "white"}}> {page.value} </StyledNavLink>
+                                    </Button> : <></>
+
                         ))}
                     </Box>
 

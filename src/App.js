@@ -12,50 +12,24 @@ import AlreadyAuth from "./views/Login/auth/AlreadyAuth";
 
 function App() {
   return (
-<<<<<<< Updated upstream
-        <BrowserRouter>
-            <Header>
-              <Suspense fallback={<CircularProgress />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                    <Route path="/welcome" element={<Welcome />} />
-                    <Route element={<AlreadyAuth />}>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                    </Route>
-                    {/* protected routes */}
-                    <Route element={<RequireAuth />}>
-                        <Route path="/welcome" element={<Welcome />} />
-                    </Route>
-                </Routes>
-              </Suspense>
-            </Header>
-        </BrowserRouter>
-||||||| Stash base
-        <BrowserRouter>
-            <Header>
-              <Suspense fallback={<CircularProgress />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                </Routes>
-              </Suspense>
-            </Header>
-        </BrowserRouter>
-=======
     <BrowserRouter>
       <Header>
         <Suspense fallback={<CircularProgress />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route element={<AlreadyAuth />}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Route>
+            {/* protected routes */}
+            <Route element={<RequireAuth />}>
+              <Route path="/welcome" element={<Welcome />} />
+            </Route>
           </Routes>
         </Suspense>
       </Header>
     </BrowserRouter>
->>>>>>> Stashed changes
   );
 }
 

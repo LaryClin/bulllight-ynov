@@ -26,7 +26,7 @@
     -->
     <title>React App</title>
   </head>
-  <body style="background-color: #211F24">
+  <body style="background-color: #211f24">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -41,3 +41,23 @@
     -->
   </body>
 </html>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("serviceWorker.js").then(
+        function (registration) {
+          // Registration was successful
+          console.log(
+            "ServiceWorker registration successful with scope: ",
+            registration.scope
+          );
+        },
+        function (err) {
+          // registration failed :(
+          console.log("ServiceWorker registration failed: ", err);
+        }
+      );
+    });
+  }
+</script>
